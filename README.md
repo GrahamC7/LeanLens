@@ -1,3 +1,3 @@
-# AI-Survey-Program
+AI-Survey-Program
 
-#Simple AI survey program created to predict your political affiliation.
+Simple AI survey program created to predict your political affiliation.
