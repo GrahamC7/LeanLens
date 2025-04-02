@@ -1,3 +1,1 @@
-AI-Survey-Program
-
-Simple AI survey program created to predict your political affiliation.
+LeanLens is a machine learning-based survey analysis tool that predicts an individual's political affiliation based on their responses to a set of opinion-based questions. Built in Java, the application processes user input, feeds it into a trained classifier, and returns a predicted leaning such as liberal, conservative, or moderate. Ideal for exploring the intersection of AI and social data.
