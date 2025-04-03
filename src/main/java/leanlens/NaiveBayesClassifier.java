@@ -1,6 +1,5 @@
 package leanlens;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,30 +12,35 @@ public class NaiveBayesClassifier {
 
     public String predict(String[] responses) {
         Map<String, Double> partyScores = new HashMap<>();
+        double totalScore = 0.0;
 
-        // calculate likelihoods of responses given each party
+        // Calculate likelihoods of responses given each party
         for (Map.Entry<String, PartyData> entry : partyDataMap.entrySet()) {
             String party = entry.getKey();
             PartyData partyData = entry.getValue();
             double score = 1.0;
             for (String response : responses) {
-                score *= partyData.getResponseScores(response);
+                score *= partyData.getResponseScore(response);
             }
             partyScores.put(party, score);
+            totalScore += score;
         }
 
-        // find party with the highest likelihood
+        // Find party with the highest score
         double maxScore = Double.MIN_VALUE;
         String predictedParty = "";
         for (Map.Entry<String, Double> entry : partyScores.entrySet()) {
-            String party = entry.getKey();
-            double score = entry.getValue();
-            if (score > maxScore) {
-                maxScore = score;
-                predictedParty = party;
+            if (entry.getValue() > maxScore) {
+                maxScore = entry.getValue();
+                predictedParty = entry.getKey();
             }
         }
 
-        return predictedParty;
+        // Calculate confidence
+        double confidence = (totalScore > 0) ? (maxScore / totalScore) * 100.0 : 0.0;
+        confidence = Math.round(confidence * 10.0) / 10.0; // round to 1 decimal
+
+        return predictedParty + " (" + confidence + "% confidence)";
     }
 }
+

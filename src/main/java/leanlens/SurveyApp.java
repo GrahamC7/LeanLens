@@ -4,23 +4,23 @@ import java.util.Scanner;
 
 public class SurveyApp {
     private static final String[] QUESTIONS = {
-            "Should there be stricter gun control laws?",
-            "How open should our borders be to immigrants?",
-            "Should the government invest more in public education, or should there be more school choice options?",
-            "What is your opinion on climate change?",
-            "Do you believe everyone deserves access to affordable healthcare, or should it be primarily a private market?",
-            "Which political party do you affiliate with?"
+            "The government should implement stricter gun control laws.",
+            "The U.S. should provide a path to citizenship for undocumented immigrants.",
+            "Taxes on the wealthy should be increased to fund social programs.",
+            "The government should ensure universal access to healthcare.",
+            "Climate change should be prioritized even at the cost of short-term economic growth.",
+            "Same-sex couples should have the same adoption rights as heterosexual couples.",
+            "Police funding should be redirected toward community and social services.",
+            "Government spending should focus more on public welfare than reducing the national debt.",
+            "Which political party do you most closely identify with?"
     };
 
-    private static final String[][] ANSWER_CHOICES = {
-            { "A. Strongly agree", "B. Agree", "C. Neutral", "D. Disagree", "E. Strongly disagree" },
-            { "A. Completely open borders", "B. Controlled immigration", "C. Closed borders" },
-            { "A. More investment in public education", "B. More school choice options", "C. Balanced approach" },
-            { "A. Climate change is a serious threat that requires immediate action",
-                    "B. Climate change is a natural phenomenon", "C. Climate change is exaggerated",
-                    "D. Climate change is a hoax" },
-            { "A. Access to affordable healthcare for all", "B. Healthcare as a private market", "C. Other" },
-            { "A. Democratic Party", "B. Republican Party", "C. Independent", "D. Other" }
+    private static final String[] SCALE = {
+            "1. Strongly Agree",
+            "2. Agree",
+            "3. Neutral",
+            "4. Disagree",
+            "5. Strongly Disagree"
     };
 
     public String[] conductSurvey() {
@@ -29,14 +29,54 @@ public class SurveyApp {
 
         for (int i = 0; i < QUESTIONS.length; i++) {
             System.out.println("\nQuestion " + (i + 1) + ": " + QUESTIONS[i]);
-            System.out.println("Options:");
-            for (String choice : ANSWER_CHOICES[i]) {
-                System.out.println(choice);
+
+            if (i < QUESTIONS.length - 1) {
+                // Use standard 1-5 agreement scale
+                for (String option : SCALE) {
+                    System.out.println(option);
+                }
+            } else {
+                // Last question: Party affiliation
+                System.out.println("1. Democratic Party");
+                System.out.println("2. Republican Party");
+                System.out.println("3. Independent");
+                System.out.println("4. Other");
             }
-            System.out.print("Your answer: ");
-            responses[i] = scanner.nextLine().toUpperCase();
+
+            int choice = 0;
+            int maxChoice = (i < QUESTIONS.length - 1) ? 5 : 4;
+
+            while (choice < 1 || choice > maxChoice) {
+                System.out.print("Enter your choice (1-" + maxChoice + "): ");
+                try {
+                    choice = Integer.parseInt(scanner.nextLine());
+                    if (choice < 1 || choice > maxChoice) {
+                        System.out.println("Invalid input. Please enter a number between 1 and " + maxChoice + ".");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input. Please enter a number between 1 and " + maxChoice + ".");
+                }
+            }
+
+            responses[i] = String.valueOf(choice);
         }
 
         return responses;
     }
+
+    public static String getAnswerText(String responseNumber) {
+        switch (responseNumber) {
+            case "1": return "Strongly Agree";
+            case "2": return "Agree";
+            case "3": return "Neutral";
+            case "4": return "Disagree";
+            case "5": return "Strongly Disagree";
+            default: return "Unknown";
+        }
+    }
+
+    public static String[] getQuestions() {
+        return QUESTIONS;
+    }
 }
+
