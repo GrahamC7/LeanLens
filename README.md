@@ -1,26 +1,29 @@
 # LeanLens
 
-**LeanLens** is a Java-based political affiliation prediction app that uses survey responses and a simple Naive Bayes-style algorithm to classify user responses as Democratic, Republican, Independent, or Other.
+**LeanLens** is a modern Java-based political affiliation prediction CLI app.  
+It uses a short opinion survey and a Naive Bayes-style algorithm to predict a user's political leaning, providing a confidence percentage along with a colorized summary of responses.
 
 ---
 
 ## 🔍 Features
 
-- Interactive CLI-based survey experience
-- Real-time political affiliation prediction
-- Naive Bayes-style classifier
-- Customizable survey questions and responses
-- Trains using previous user responses (stored in plain text)
-- Modular, readable code structure
+- 🔢 Number-based survey with refined political questions
+- 🎯 Real-time prediction with confidence percentage
+- 📊 Naive Bayes-style classification
+- 🧠 Remembers responses to improve future accuracy
+- 🎨 ANSI-colored CLI for a polished UX
+- 🧱 Modular, well-structured Java classes
+- 🛡️ Integrated logging for robust error handling
 
 ---
 
 ## 🧠 How It Works
 
-1. The user takes a short political opinion survey.
-2. Responses are compared to historical trends per party.
-3. LeanLens uses a probability model to predict the likely political leaning.
-4. The user's responses are saved to further train the system.
+1. The user completes a series of survey questions (Strongly Agree → Strongly Disagree).
+2. At the end, they select their own political affiliation.
+3. Their responses are saved and used to train the model.
+4. The app predicts the user's likely political leaning based on prior training data.
+5. The result includes a confidence score and a summary of their answers.
 
 ---
 
@@ -28,14 +31,14 @@
 
 ### Prerequisites
 
-- Java 17 or higher
-- Maven (optional, if you want to build via `pom.xml`)
+- Java 21 or higher
+- Maven (optional)
 
 ### Run the App
 
 ```bash
-# If using IntelliJ or any IDE, simply run Main.java
-# OR run from command line:
+# From your IDE (e.g., IntelliJ), run Main.java
+# Or from terminal:
 javac -d out src/main/java/leanlens/*.java
 java -cp out leanlens.Main
 ```
@@ -55,17 +58,18 @@ src/
             ├── PartyData.java
             └── NaiveBayesClassifier.java
 data/
-└── (survey training data files)
+└── (training data files saved per political party)
 ```
 
 ---
 
 ## 🛠️ Future Improvements
 
-- Add scoring confidence or heatmap-style feedback
-- Support saving/exporting data in JSON or CSV
-- GUI interface (JavaFX or web-based)
-- Model serialization and smarter learning over time
+- 📊 Visual confidence bar (e.g. ███████░░ 70%)
+- 🧪 Add unit tests for core components
+- 🌐 Web-based version (React/Flask)
+- 📂 Save/load models in JSON format
+- 🔁 Survey retry or session history
 
 ---
 
@@ -78,4 +82,4 @@ Graham Cockerham
 
 ## 📜 License
 
-This project is open source and free to use under the MIT License.
+This project is open source and free to use under the MIT License.ct is open source and free to use under the MIT License.
