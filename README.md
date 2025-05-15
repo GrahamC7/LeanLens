@@ -33,15 +33,26 @@ It uses a short opinion survey and a Naive Bayes-style algorithm to predict a us
 
 - Java 21 or higher
 - Maven (optional)
+- Node.js (v16 or higher)
+- npm (v7 or higher)
 
 ### Run the App
 
-```bash
-# From your IDE (e.g., IntelliJ), run Main.java
-# Or from terminal:
-javac -d out src/main/java/leanlens/*.java
-java -cp out leanlens.Main
-```
+Installation
+
+Clone the repository:
+
+git clone https://github.com/GrahamC7/LeanLens.git
+cd LeanLens
+
+Install dependencies for the frontend:
+
+cd leanlens-ui
+npm install
+
+Start the development server:
+npm run dev
+This will launch the app at http://localhost:5173.
 
 ---
 
