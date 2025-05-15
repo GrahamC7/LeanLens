@@ -42,17 +42,17 @@ Installation
 
 Clone the repository:
 
-git clone https://github.com/GrahamC7/LeanLens.git
-cd LeanLens
+- git clone https://github.com/GrahamC7/LeanLens.git
+- cd LeanLens
 
 Install dependencies for the frontend:
 
-cd leanlens-ui
-npm install
+- cd leanlens-ui
+- npm install
 
 Start the development server:
-npm run dev
-This will launch the app at http://localhost:5173.
+- npm run dev 
+- This will launch the app at http://localhost:5173.
 
 ---
 
