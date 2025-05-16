@@ -16,4 +16,3 @@ public enum ConsoleColor {
         return code;
     }
 }
-git a
