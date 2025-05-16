@@ -2,6 +2,7 @@ package leanlens;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 public class NaiveBayesClassifier {
     private Map<String, PartyData> partyDataMap;
@@ -10,7 +11,7 @@ public class NaiveBayesClassifier {
         this.partyDataMap = partyDataMap;
     }
 
-    public String predict(String[] responses) {
+    public String predict(List<String> responses) {
         Map<String, Double> partyScores = new HashMap<>();
         double totalScore = 0.0;
 

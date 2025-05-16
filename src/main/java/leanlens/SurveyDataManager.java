@@ -3,15 +3,14 @@ package leanlens;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SurveyDataManager {
     private static final Logger LOGGER = Logger.getLogger(SurveyDataManager.class.getName());
     private static final String DATA_DIRECTORY = "data/";
-    private static final String[] PARTY_AFFILIATIONS = {
-            "Democratic Party", "Republican Party", "Independent", "Other"
-    };
+    private static final List<String> PARTY_AFFILIATIONS = List.of("Democratic Party", "Republican Party", "Independent", "Other");
 
     public Map<String, PartyData> loadTrainingData() {
         Map<String, PartyData> partyDataMap = new HashMap<>();
@@ -48,9 +47,9 @@ public class SurveyDataManager {
         return partyDataMap;
     }
 
-    public void saveResponses(String[] responses) {
-        String userParty = responses[responses.length - 1];
-        String[] parties = { "Democratic Party", "Republican Party", "Independent", "Other" };
+    public void saveResponses(List<String> responses) {
+        String userParty = responses.get(responses.size() - 1);
+        List<String> parties = List.of("Democratic Party", "Republican Party", "Independent", "Other");
         int partyIndex;
 
         try {
@@ -60,22 +59,21 @@ public class SurveyDataManager {
             return;
         }
 
-        if (partyIndex < 0 || partyIndex >= parties.length) {
+        if (partyIndex < 0 || partyIndex >= parties.size()) {
             LOGGER.warning("Party index out of bounds: " + partyIndex);
             return;
         }
 
-        String party = parties[partyIndex];
+        String party = parties.get(partyIndex);
         String fileName = DATA_DIRECTORY + party.replace(" ", "_") + ".txt";
         LOGGER.info("Saving responses to: " + fileName);
 
         try (FileWriter writer = new FileWriter(fileName, true)) {
-            for (int i = 0; i < responses.length - 1; i++) {
-                writer.write(responses[i] + "\n");
+            for (int i = 0; i < responses.size() - 1; i++) {
+                writer.write(responses.get(i) + "\n");
             }
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Failed to save responses to file: " + fileName, e);
         }
     }
 }
-

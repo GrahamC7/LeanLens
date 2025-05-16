@@ -33,7 +33,7 @@ It uses a short opinion survey and a Naive Bayes-style algorithm to predict a us
 
 ### Prerequisites
 - Node.js (v16 or higher)
-- npm (v7 or higher)
+- npm
 
 ### Installation & Run
 1. Navigate to the frontend directory:
@@ -48,18 +48,18 @@ It uses a short opinion survey and a Naive Bayes-style algorithm to predict a us
 
 ## Java CLI App
 ### Prerequisites
-- Java 17 or higher
-- (Optional) An IDE like IntelliJ or VS Code for convenience
+- Java 21 or higher
+- Maven
 
 ## Compile and Run
-1. Navigate to the CLI directory:
-- cd cli 
+1. From the project root, compile the CLI with Maven:
+- mvn compile
 
-2. Compile the Java application:
-- javac LeanLens.java
+2. Run the application:
+- mvn exec:java -Dexec.mainClass="leanlens.Main"
 
-3. Run the program:
-- java LeanLens
+3. If exec-maven-plugin is not yet configured, you can run the compiled class manually:
+- java -cp target/classes leanlens.Main
 
 Follow the prompts in the terminal to complete the survey and receive your political affiliation prediction.
 

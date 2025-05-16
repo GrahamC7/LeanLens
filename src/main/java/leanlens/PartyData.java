@@ -23,4 +23,3 @@ public class PartyData {
         return responseScores.getOrDefault(response, 0.0);
     }
 }
-
