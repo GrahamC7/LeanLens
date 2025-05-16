@@ -29,32 +29,39 @@ It uses a short opinion survey and a Naive Bayes-style algorithm to predict a us
 
 ## 🚀 Getting Started
 
-### Prerequisites
+### React Frontend
 
-- Java 21 or higher
-- Maven (optional)
+### Prerequisites
 - Node.js (v16 or higher)
 - npm (v7 or higher)
 
-### Run the App
-
-Installation
-
-Clone the repository:
-
-- git clone https://github.com/GrahamC7/LeanLens.git
-- cd LeanLens
-
-Install dependencies for the frontend:
-
+### Installation & Run
+1. Navigate to the frontend directory:
 - cd leanlens-ui
+
+2. Install dependencies:
 - npm install
 
-Start the development server:
-- npm run dev 
-- This will launch the app at http://localhost:5173.
+3. Start the development server:
+- npm run dev
+- App will run at http://localhost:5173.
 
----
+## Java CLI App
+### Prerequisites
+- Java 17 or higher
+- (Optional) An IDE like IntelliJ or VS Code for convenience
+
+## Compile and Run
+1. Navigate to the CLI directory:
+- cd cli 
+
+2. Compile the Java application:
+- javac LeanLens.java
+
+3. Run the program:
+- java LeanLens
+
+Follow the prompts in the terminal to complete the survey and receive your political affiliation prediction.
 
 ## 📁 Project Structure
 
