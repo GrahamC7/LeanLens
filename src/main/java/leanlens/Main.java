@@ -1,5 +1,6 @@
 package leanlens;
 
+import static leanlens.ConsoleColor.*;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -13,15 +14,15 @@ public class Main {
 
     // Step 2: Show user a summary of their answers
     System.out.printf("%s%s\nThanks for completing the survey! Here's a quick summary of your responses:\n%s\n",
-            ConsoleColor.BOLD, ConsoleColor.BLUE, ConsoleColor.RESET);
+            BOLD, BLUE, RESET);
 
     List<String> questions = SurveyApp.getQuestions();
 
     IntStream.range(0, questions.size() - 1).forEach(i -> {
       String question = questions.get(i);
       String answer = SurveyApp.getAnswerText(userResponses.get(i));
-      System.out.printf("%s%d. %s%s\n", ConsoleColor.BOLD, i + 1, question, ConsoleColor.RESET);
-      System.out.printf("   → Answer: %s%s%s\n\n", ConsoleColor.YELLOW, answer, ConsoleColor.RESET);
+      System.out.printf("%s%d. %s%s\n", BOLD, i + 1, question, RESET);
+      System.out.printf("   → Answer: %s%s%s\n\n", YELLOW, answer, RESET);
     });
 
     // Step 3: Load training data
@@ -43,8 +44,8 @@ public class Main {
     NaiveBayesClassifier classifier = new NaiveBayesClassifier(partyDataMap);
     String predictedParty = classifier.predict(userResponses);
 
-    System.out.printf("%s\nPredicting political leaning...%s\n", ConsoleColor.BOLD, ConsoleColor.RESET);
-    System.out.printf("%s\nPredicted political party: %s%s\n", ConsoleColor.GREEN, predictedParty, ConsoleColor.RESET);
+    System.out.printf("%s\nPredicting political leaning...%s\n", BOLD, RESET);
+    System.out.printf("%s\nPredicted political party: %s%s\n", GREEN, predictedParty, RESET);
   }
 }
 
