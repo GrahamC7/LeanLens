@@ -30,12 +30,13 @@ public class Main {
     Map<String, PartyData> partyDataMap = dataManager.loadTrainingData();
 
     // Step 4: Update training data
-    IntStream.range(0, userResponses.size() - 1).forEach(i -> {
-      String response = userResponses.get(i);
-      if (!response.isEmpty()) {
-        partyDataMap.values().forEach(party -> party.updateResponseScore(response));
-      }
-    });
+    for (int i = 0; i < userResponses.size() - 1; i++) {
+        String response = userResponses.get(i);
+        if (!response.isEmpty()) {
+            partyDataMap.values().forEach(party -> party.updateResponseScore(response));
+        }
+    }
+
 
     // Step 5: Save responses
     dataManager.saveResponses(userResponses);
