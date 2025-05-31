@@ -14,7 +14,11 @@ public enum ConsoleColor {
         this.code = code;
     }
 
-    public String code() {
+    // CHANGE #1: Removed the code() method
+    // CHANGE #2: Added toString() method to replace code()
+    // Using ConsoleColor.BLUE directly instead of ConsoleColor.BLUE.code()
+    @Override
+    public String toString() {
         return code;
     }
 }
