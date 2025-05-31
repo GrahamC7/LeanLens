@@ -13,7 +13,7 @@ public class Main {
     List<String> userResponses = surveyApp.conductSurvey();
 
     // Step 2: Show user a summary of their answers
-    System.out.printf("%s%s\nThanks for completing the survey! Here's a quick summary of your responses:\n%s\n",
+    System.out.printf("%s%s%nThanks for completing the survey! Here's a quick summary of your responses:%n%s%n",
             BOLD, BLUE, RESET);
 
     List<String> questions = SurveyApp.getQuestions();
@@ -21,8 +21,8 @@ public class Main {
     IntStream.range(0, questions.size() - 1).forEach(i -> {
       String question = questions.get(i);
       String answer = SurveyApp.getAnswerText(userResponses.get(i));
-      System.out.printf("%s%d. %s%s\n", BOLD, i + 1, question, RESET);
-      System.out.printf("   → Answer: %s%s%s\n\n", YELLOW, answer, RESET);
+      System.out.printf("%s%d. %s%s%n", BOLD, i + 1, question, RESET);
+      System.out.printf("   → Answer: %s%s%s%n%n", YELLOW, answer, RESET);
     });
 
     // Step 3: Load training data
@@ -44,8 +44,8 @@ public class Main {
     NaiveBayesClassifier classifier = new NaiveBayesClassifier(partyDataMap);
     String predictedParty = classifier.predict(userResponses);
 
-    System.out.printf("%s\nPredicting political leaning...%s\n", BOLD, RESET);
-    System.out.printf("%s\nPredicted political party: %s%s\n", GREEN, predictedParty, RESET);
+    System.out.printf("%s%nPredicting political leaning...%s%n", BOLD, RESET);
+    System.out.printf("%s%nPredicted political party: %s%s%n", GREEN, predictedParty, RESET);
   }
 }
 
